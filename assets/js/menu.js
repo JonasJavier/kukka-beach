@@ -11,6 +11,7 @@
   var t = K.t;
   var LANG = K.LANG;
   var FACTOR = 1 + CFG.impuestos.itbis + CFG.impuestos.servicio;
+  var BASE = new URL(CFG.SITE_URL).pathname.replace(/\/$/, "");
   var buscador = document.querySelector("[data-menu-buscar]");
   var filtros = document.querySelector("[data-menu-filtros]");
   var interruptor = document.querySelector("[data-menu-impuestos]");
@@ -38,7 +39,7 @@
     tintos: t("grupo_tintos", "Tintos")
   };
 
-  var numero = new Intl.NumberFormat(K.LOCALE, { maximumFractionDigits: 0 });
+  var numero = new Intl.NumberFormat(K.LOCALE, { maximumFractionDigits: 0, useGrouping: "always" });
   function precio(n) {
     var valor = estado.impuestos ? Math.round(n * FACTOR) : n;
     return "RD$ " + numero.format(valor);
@@ -88,7 +89,7 @@
   function htmlPlato(p) {
     var foto = "";
     if (p.foto) {
-      foto = '<img class="plato-foto" src="/assets/img/fotos/' + p.foto + '-480.webp" width="76" height="76" loading="lazy" decoding="async" alt="">';
+      foto = '<img class="plato-foto" src="' + BASE + '/assets/img/fotos/' + p.foto + '-480.webp" width="76" height="76" loading="lazy" decoding="async" alt="">';
     }
     var tags = (p.tags || []).filter(function (x) { return TAGS[x]; }).map(function (x) {
       return '<span class="tag tag-' + x + '">' + TAGS[x] + "</span>";

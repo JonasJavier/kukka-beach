@@ -3,7 +3,7 @@
    JSON-LD y el QR salen de aquí. Mantén el objeto como JSON válido
    (comillas dobles, sin comas finales). */
 window.KUKKA_CONFIG = {
-  "SITE_URL": "https://kukkabeach.netlify.app",
+  "SITE_URL": "https://jonasjavier.github.io/kukka-beach",
   "nombre": "Kukka Beach Restaurant",
   "nombreCorto": "Kukka Beach",
   "grupo": "Alkquimia",
